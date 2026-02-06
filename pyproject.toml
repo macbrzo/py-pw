@@ -1,0 +1,40 @@
+[project]
+name = "py-pw"
+version = "0.1.0"
+description = "Python Playwright empowered by pytest"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = ["playwright>=1.58.0", "pytest>=9.0.2", "pytest-xdist>=3.8.0"]
+
+[dependency-groups]
+dev = ["pre-commit>=4.5.1", "ruff>=0.15.0"]
+
+[tool.ruff]
+# Directories to lint
+src = ["src", "tests"]
+
+# Enable the main rule sets that replace Flake8, isort, and Black
+lint.select = ["E", "F", "I", "UP", "B"]
+
+lint.ignore = ["E501"]
+
+exclude = [".git", ".venv", "__pycache__", "build", "dist"]
+
+target-version = "py313"
+
+# Use Ruff’s built-in formatter (replaces Black)
+line-length = 100
+indent-width = 4
+
+# Enable autofix for import sorting (replaces isort)
+fix = true
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "lf"
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+force-sort-within-sections = true
