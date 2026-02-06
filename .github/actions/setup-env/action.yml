@@ -1,0 +1,21 @@
+name: Setup Python + uv Environment
+
+description: Reusable setup for Python projects using uv
+
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version-file: .python-version
+
+    - name: Set up uv
+      uses: astral-sh/setup-uv@v2
+
+    - name: Sync dependencies
+      shell: bash
+      run: uv sync --group dev
