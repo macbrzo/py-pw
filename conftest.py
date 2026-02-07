@@ -17,15 +17,7 @@ MOBILE_DEVICES = [
 
 def pytest_configure(config):
     Path(SCREENSHOTS_PATH).mkdir(parents=True, exist_ok=True)
-
-    is_video = config.getoption("--video").lower() == "on"
-    run_all = config.getoption("--all-mobile-devices")
-
-    if is_video:
-        mobile_devices = MOBILE_DEVICES if run_all else [MOBILE_DEVICES[0]]
-        for device in mobile_devices:
-            device_path = Path(VIDEOS_PATH) / device.replace(" ", "_")
-            device_path.mkdir(parents=True, exist_ok=True)
+    Path(VIDEOS_PATH).mkdir(parents=True, exist_ok=True)
 
 
 def pytest_addoption(parser):
@@ -55,6 +47,9 @@ def browser_context_args(browser_context_args, playwright, mobile_device, reques
     }
 
     if request.config.getoption("--video").lower() == "on":
-        # in real project its probably better to store videos grouped by specifc test/device
-        context["record_video_dir"] = Path(VIDEOS_PATH) / mobile_device.replace(" ", "_")
+        test_dir = request.node.name.split("[")[0]
+        record_video_dir = Path(VIDEOS_PATH) / test_dir / mobile_device.replace(" ", "_")
+        record_video_dir.mkdir(parents=True, exist_ok=True)
+        context["record_video_dir"] = record_video_dir
+
     return context
