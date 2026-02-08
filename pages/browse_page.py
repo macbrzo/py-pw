@@ -10,14 +10,9 @@ class BrowsePage(BasePage):
         self.nav = NavigationBar(self.page)
 
         self.live_streams = self.page.get_by_role("button").filter(has_text="viewers")
-        # self.page.add_locator_handler(
-        #     self.page.get_by_role("button", name="Activate to close dialog"),
-        #     lambda: self.page.get_by_role("button", name="Keep using web").click()
-        # )
 
-    def go_to_visible_video(self, num: int) -> None:
+    def click_visible_video(self, num: int) -> None:
         live_stream = self.live_streams.filter(visible=True).nth(num)
-        # live_stream.wait_for(state="visible")
         live_stream.nth(num).click()
 
     def scroll_full_screen(self, amount: int = 1, scroll_timeout: int = 500) -> None:
