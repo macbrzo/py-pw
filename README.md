@@ -29,6 +29,7 @@
 The framework uses Playwright's `add_locator_handler` to automatically deal with non-deterministic overlays that interrupt test flow.
 - Mature Content Gate (**StreamPage**): Automatically detects the `This content may not be...` warning and triggers the `Start Watching` button to resume the stream.
 - Activation Modal (**TwitchTV**): Specifically handles the `Keep using web` dialog that frequently appears during multi-threaded runs.
+
 By registering these handlers, the main test logic remains clean and focused on the actual scenario, while Playwright manages the popups in the background as they appear.
 
 
