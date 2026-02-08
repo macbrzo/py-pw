@@ -1,6 +1,6 @@
-from components.navigation_bar import NavigationBar
 from playwright.sync_api import Page
 
+from components.navigation_bar import NavigationBar
 from pages.base_page import BasePage
 
 

@@ -1,7 +1,7 @@
-from components.navigation_bar import NavigationBar
-from config import BASE_URL
 from playwright.sync_api import Page, TimeoutError
 
+from components.navigation_bar import NavigationBar
+from config import BASE_URL
 from pages.base_page import BasePage
 
 
@@ -23,7 +23,6 @@ class TwitchTv(BasePage):
         self.page.add_locator_handler(
             self._activate_gate,
             lambda: [
-                # self._activate_gate_keep_using_web_btn.click(force=True),
                 self._activate_gate_keep_using_web_btn.dispatch_event("click"),
                 self._activate_gate.wait_for(state="hidden"),
             ],

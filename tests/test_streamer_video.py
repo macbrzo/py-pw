@@ -1,10 +1,11 @@
 import logging
 
+from playwright.sync_api import expect
+import pytest
+
 from pages.browse_page import BrowsePage
 from pages.stream_page import StreamPage
 from pages.twitchtv import TwitchTv
-from playwright.sync_api import expect
-import pytest
 
 
 def test__success__start_sc2_live_stream(page):
