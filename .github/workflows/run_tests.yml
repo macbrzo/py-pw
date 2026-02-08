@@ -1,0 +1,36 @@
+name: Run Tests
+
+run-name: >
+    Tests Execution – ${{ github.event.pull_request.title || github.event.head_commit.message }}
+    (#${{ github.event.pull_request.number || github.run_number }})
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
+
+jobs:
+    test:
+        name: Tests Exectuion
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Setup Environment
+              uses: ./.github/actions/setup-env
+
+            - name: Setup playwright
+              run: uv run playwright install chromium --with-deps
+
+            - name: Execute tests
+              run: uv run pytest --browser chromium --all-mobile-devices --video on -n auto
+
+            - name: Upload Artifacts (Screenshots/Videos)
+              if: always()
+              uses: actions/upload-artifact@v4
+              with:
+                  name: playwright-results
+                  path: artifacts/
+                  retention-days: 7
