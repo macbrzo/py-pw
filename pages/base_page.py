@@ -12,6 +12,7 @@ class BasePage:
 
     def go_to_page(self, url: str) -> None:
         self.page.goto(url)
+        self.page.wait_for_load_state("load")
 
     def take_screenshot(self, name: str | None = None) -> None:
         if not name:
