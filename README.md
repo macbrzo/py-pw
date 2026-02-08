@@ -1,6 +1,5 @@
 ## Python Playwright empowered by pytest
 
-[![Tests Execution](https://github.com/macbrzo/py-pw/actions/workflows/run_tests.yml/badge.svg)](https://github.com/macbrzo/py-pw/actions/workflows/run_tests.yml)
 [![Code Quality (Lint & Format)](https://github.com/macbrzo/py-pw/actions/workflows/code_quality.yml/badge.svg)](https://github.com/macbrzo/py-pw/actions/workflows/code_quality.yml)
 
 ### Project structure
@@ -32,6 +31,10 @@ The framework uses Playwright's `add_locator_handler` to automatically deal with
 - Activation Modal (**TwitchTV**): Specifically handles the `Keep using web` dialog that frequently appears during multi-threaded runs.
 By registering these handlers, the main test logic remains clean and focused on the actual scenario, while Playwright manages the popups in the background as they appear.
 
+
+### Demo
+
+![TwitchTV](./assets/demo.gif)
 
 
 ### Installation
