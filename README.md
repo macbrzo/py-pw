@@ -41,7 +41,7 @@ By registering these handlers, the main test logic remains clean and focused on 
 1. Clone the repository
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/macbrzo/py-pw
 cd py-pw
 ```
 
