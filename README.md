@@ -1,5 +1,6 @@
 ## Python Playwright empowered by pytest
 
+[![Tests Execution](https://github.com/macbrzo/py-pw/actions/workflows/run_tests.yml/badge.svg)](https://github.com/macbrzo/py-pw/actions/workflows/run_tests.yml)
 [![Code Quality (Lint & Format)](https://github.com/macbrzo/py-pw/actions/workflows/code_quality.yml/badge.svg)](https://github.com/macbrzo/py-pw/actions/workflows/code_quality.yml)
 
 ### Project structure
