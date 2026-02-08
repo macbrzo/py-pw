@@ -16,7 +16,7 @@ dev = ["pre-commit>=4.5.1", "ruff>=0.15.0"]
 
 [tool.ruff]
 # Directories to lint
-src = ["src", "tests"]
+src = ["."]
 
 # Enable the main rule sets that replace Flake8, isort, and Black
 lint.select = ["E", "F", "I", "UP", "B"]
@@ -43,3 +43,10 @@ line-ending = "lf"
 [tool.ruff.lint.isort]
 combine-as-imports = true
 force-sort-within-sections = true
+section-order = [
+    "future",
+    "standard-library",
+    "third-party",
+    "first-party",
+    "local-folder",
+]

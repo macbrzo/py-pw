@@ -1,8 +1,9 @@
 from pathlib import Path
 from uuid import uuid4
 
-from config import SCREENSHOTS_PATH
 from playwright.sync_api import Page
+
+from config import SCREENSHOTS_PATH
 
 
 class BasePage:

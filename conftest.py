@@ -1,8 +1,9 @@
 from pathlib import Path
 from uuid import uuid4
 
-from config import SCREENSHOTS_PATH, VIDEOS_PATH
 import pytest
+
+from config import SCREENSHOTS_PATH, VIDEOS_PATH
 
 MOBILE_DEVICES = [
     "iPhone X",
