@@ -33,6 +33,10 @@ The framework uses Playwright's `add_locator_handler` to automatically deal with
 By registering these handlers, the main test logic remains clean and focused on the actual scenario, while Playwright manages the popups in the background as they appear.
 
 
+### Demo
+
+![TwitchTV](./assets/demo.gif)
+
 
 ### Installation
 1. Clone the repository
