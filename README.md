@@ -1,5 +1,7 @@
 ## Python Playwright empowered by pytest
 
+[![Code Quality (Lint & Format)](https://github.com/macbrzo/py-pw/actions/workflows/code_quality.yml/badge.svg)](https://github.com/macbrzo/py-pw/actions/workflows/code_quality.yml)
+
 ### Project structure
 
 ```bash
