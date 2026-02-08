@@ -5,9 +5,6 @@ description: Reusable setup for Python projects using uv
 runs:
   using: "composite"
   steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
@@ -15,7 +12,9 @@ runs:
 
     - name: Set up uv
       uses: astral-sh/setup-uv@v2
+      with:
+        enable-cache: true
 
     - name: Sync dependencies
       shell: bash
-      run: uv sync --group dev
+      run: uv sync --all-groups
