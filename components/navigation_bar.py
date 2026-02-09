@@ -1,6 +1,9 @@
-from typing import Self
+from typing import TYPE_CHECKING
 
 from playwright.sync_api import Page
+
+if TYPE_CHECKING:
+    from pages.browse_page import BrowsePage
 
 
 class NavigationBar:
@@ -8,19 +11,10 @@ class NavigationBar:
         self.page = page
 
         self.browse_link = self.page.get_by_role("link", name="Browse")
-        self.search_input = self.page.get_by_role("searchbox", name="Search")
 
-        self._category_href = self.page.locator('a[href^="/directory/category"]')
-        self.first_category_suggestion = self.page.get_by_role("listitem").filter(
-            has=self._category_href
-        )
+    def navigate_to_browse(self) -> "BrowsePage":
+        from pages.browse_page import BrowsePage
 
-    def go_to_browse(self) -> Self:
         self.page.wait_for_load_state("load")
         self.browse_link.click()
-        return self
-
-    def search_for(self, text: str) -> None:
-        self.search_input.click()
-        self.search_input.fill(text)
-        self.first_category_suggestion.click()
+        return BrowsePage(self.page)
