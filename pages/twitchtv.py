@@ -8,7 +8,7 @@ from pages.base_page import BasePage
 
 
 class TwitchTv(BasePage):
-    def __init__(self, page: Page) -> None:
+    def __init__(self, page: Page, handle_cookies_and_ads: bool = True) -> None:
         super().__init__(page)
         self.nav = NavigationBar(self.page)
         # Cookies and Ads modal
@@ -26,14 +26,18 @@ class TwitchTv(BasePage):
             lambda: self._hanlde_activation_dialog(),
         )
         # Added to handle Cookies and Ads modal
-        self.page.add_locator_handler(
-            self.cookies_and_ads_modal,
-            lambda: self._handle_cookies_and_ads(),
-        )
+        # Note: Automated handling of the cookies and ads modal can be disabled to allow for explicit testing of that element
+        if handle_cookies_and_ads:
+            self.page.add_locator_handler(
+                self.cookies_and_ads_modal,
+                lambda: self._handle_cookies_and_ads(),
+            )
 
     @classmethod
-    def navigate_to(cls, page: Page, url=BASE_URL) -> TwitchTv:
-        twitch_page = cls(page)
+    def navigate_to(
+        cls, page: Page, handle_cookies_and_ads: bool = True, url: str = BASE_URL
+    ) -> TwitchTv:
+        twitch_page = cls(page, handle_cookies_and_ads)
         twitch_page.go_to(url)
         return twitch_page
 
