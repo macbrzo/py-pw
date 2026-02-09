@@ -10,11 +10,7 @@ class TwitchTv(BasePage):
         super().__init__(page)
         self.nav = NavigationBar(self.page)
         # Cookies and Ads modal
-        self.cookies_and_ads_modal = (
-            self.page.locator("div")
-            .filter(has_text="Cookies and Advertising")
-            .nth(3)  # TODO: find better locator
-        )
+        self.cookies_and_ads_modal = self.page.get_by_text("Cookies and Advertising")
         self.accept_btn = self.page.get_by_role("button", name="Accept")
         # Activation dialog
         self.activate_gate = self.page.get_by_role("button", name="Activate to close dialog")
