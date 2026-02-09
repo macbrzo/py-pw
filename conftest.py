@@ -56,6 +56,8 @@ def browser_context_args(browser_context_args, playwright, mobile_device, reques
     return context
 
 
+# Added to take screenshot after each test - task requirement
+# Usually screenshots are taken only for failed tests
 @pytest.fixture(scope="function", autouse=True)
 def take_screenshot(request, page, mobile_device):
     yield

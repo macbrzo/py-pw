@@ -11,7 +11,7 @@ class BasePage:
         self.page = page
         self.timeout = timeout
 
-    def go_to_page(self, url: str) -> None:
+    def go_to(self, url: str) -> None:
         self.page.goto(url)
         self.page.wait_for_load_state("load")
 
