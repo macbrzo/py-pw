@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import TYPE_CHECKING
 
 from playwright.sync_api import Page
@@ -22,14 +24,14 @@ class BrowsePage(BasePage):
         )
         self.live_streams = self.page.get_by_role("button").filter(has_text="viewers")
 
-    def search(self, text: str) -> "BrowsePage":
+    def search(self, text: str) -> BrowsePage:
         from pages.browse_page import BrowsePage
 
         self.search_input.fill(text)
         self.first_category_suggestion.click()
         return BrowsePage(self.page)
 
-    def click_visible_video(self, num: int) -> "StreamPage":
+    def click_visible_video(self, num: int) -> StreamPage:
         from pages.stream_page import StreamPage
 
         live_stream = self.live_streams.filter(visible=True).nth(num)

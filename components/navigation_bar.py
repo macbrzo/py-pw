@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import TYPE_CHECKING
 
 from playwright.sync_api import Page
@@ -12,7 +14,7 @@ class NavigationBar:
 
         self.browse_link = self.page.get_by_role("link", name="Browse")
 
-    def navigate_to_browse(self) -> "BrowsePage":
+    def navigate_to_browse(self) -> BrowsePage:
         from pages.browse_page import BrowsePage
 
         self.page.wait_for_load_state("load")
