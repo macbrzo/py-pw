@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from playwright.sync_api import Page
 
 from components.navigation_bar import NavigationBar
@@ -30,7 +32,7 @@ class TwitchTv(BasePage):
         )
 
     @classmethod
-    def navigate_to(cls, page: Page, url=BASE_URL) -> "TwitchTv":
+    def navigate_to(cls, page: Page, url=BASE_URL) -> TwitchTv:
         twitch_page = cls(page)
         twitch_page.go_to(url)
         return twitch_page
